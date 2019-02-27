@@ -3,13 +3,13 @@ import { ApolloProvider } from 'react-apollo';
 
 import apolloClient from './services/apollo';
 
-import TodoList from './components/TodoList';
+import JobList from './components/JobList';
 
 class App extends Component {
   render() {
     return (
       <ApolloProvider client={apolloClient}>
-        <TodoList />
+        <JobList />
       </ApolloProvider>
     );
   }
