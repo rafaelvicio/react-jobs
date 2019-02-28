@@ -18,10 +18,10 @@ class JobList extends Component {
   )
 
   addJob = () => {
-    const { newJobText } = this.state;
+    const { newJobName } = this.state;
     console.log('-------------> ', this.props)
     this.props.addJob({
-      variables: { name: newJobText },
+      variables: { name: newJobName },
       update: (proxy, { data: { createJob } }) => {
         this.props.jobs.refetch();
 
@@ -40,8 +40,8 @@ class JobList extends Component {
 
         <input
           type="text"
-          value={this.state.newJobText}
-          onChange={e => this.setState({ newJobText: e.target.value })}
+          value={this.state.newJobName}
+          onChange={e => this.setState({ newJobName: e.target.value })}
         />
         <input type="submit" value="Criar" onClick={this.addJob} />
       </Fragment>
@@ -59,8 +59,8 @@ const JobsQuery = gql`
 `;
 
 const JobsMutation = gql`
-  mutation ($text: String!) {
-    createJob ( name: $text ) {
+  mutation ($name: String!) {
+    createJob ( name: $name ) {
       _id
       name
     }
